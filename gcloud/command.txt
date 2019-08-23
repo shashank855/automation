@@ -1,0 +1,13 @@
+igcloud auth activate-service-account --key-file auth/openebs-ci-7a830fe4f8ee.json
+
+gcloud config set project <project-name>
+
+ssh -o StrictHostKeyChecking=no konvoy-autoscalar.us-central1-a.openebs-ci
+
+gcloud compute config-ssh --force-key-file-overwrite --ssh-key-file=~/.ssh/id_rsa
+
+gcloud compute images list
+
+gcloud compute images list --uri
+
+gcloud compute scp konvoy-autoscalar:/home/gitlab-runner/script.sh ./  --zone=us-central1-a
